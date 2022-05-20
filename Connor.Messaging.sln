@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connor.Messaging", "Connor.Messaging\Connor.Messaging.csproj", "{A2F511EB-57F9-47A3-A557-445DA175A059}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2F511EB-57F9-47A3-A557-445DA175A059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F511EB-57F9-47A3-A557-445DA175A059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F511EB-57F9-47A3-A557-445DA175A059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F511EB-57F9-47A3-A557-445DA175A059}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EFAC8F4-6EA6-4505-9315-2F2536375958}
+	EndGlobalSection
+EndGlobal
