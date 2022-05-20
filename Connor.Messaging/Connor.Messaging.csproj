@@ -2,12 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <!-- For NuGet -->
+	  <PackageId>Connor.Messaging</PackageId>
+	  <Version>6.0.0</Version>
+	  <Authors>Connor Vargas</Authors>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RepositoryUrl>https://github.com/ConnorV645/Connor.Messaging</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/ConnorV645/Connor.Messaging</PackageProjectUrl>
+	  <PackageIcon>icon1.png</PackageIcon>
+	  <Description>Quickly Create a .NET Messaging System With WebSockets and Redis</Description>
+	  <AssemblyVersion>6.0.0.0</AssemblyVersion>
+	  <FileVersion>6.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ConnorWebSockets" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	<None Include="icon1.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

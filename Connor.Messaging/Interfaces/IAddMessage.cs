@@ -2,11 +2,10 @@
 
 namespace Connor.Messaging.Interfaces
 {
-    public interface IAddMessage
+    public interface IAddMessage : IHasSourceUser
     {
         DateTime Timestamp { get; set; }
         string Message { get; set; }
         long DiscussionId { get; set; }
-        long UserId { get; set; }
     }
 }

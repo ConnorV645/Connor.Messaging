@@ -13,13 +13,22 @@ using System.Threading.Tasks;
 
 namespace Connor.Messaging.Bases
 {
-    public abstract class MessageHandlerBase<T, R, C> : WebSocketHandlerBase<T> where T : WebSocketBase where R : Enum where C : DiscussionCacheBase<T>
+    public abstract class MessageHandlerBase<T, R, C, U> : WebSocketHandlerBase<T> 
+        where T : UserWebSocketBase 
+        where R : Enum
+        where C : DiscussionCacheBase<T>
+        where U : UserCacheBase<T>
     {
         protected readonly IServiceScopeFactory factory;
+        private readonly C discussionCache;
+        private readonly U userCache;
 
-        public MessageHandlerBase(IServiceScopeFactory factory, IConnectionManager<T> webSocketConnectionManager, ILogger logger) : base(webSocketConnectionManager, logger)
+        public MessageHandlerBase(IServiceScopeFactory factory, IConnectionManager<T> webSocketConnectionManager, ILogger logger, C discussionCache, U userCache) : base(webSocketConnectionManager, logger)
         {
             this.factory = factory;
+            this.discussionCache = discussionCache;
+            this.userCache = userCache;
+            
         }
 
         public override async Task<string> OnConnected(T socket)
@@ -34,6 +43,14 @@ namespace Connor.Messaging.Bases
         {
             try
             {
+                if (socket.UserId > 0)
+                {
+                    await userCache.UnsubscribeFromChannel(socket, socket.UserId);
+                }
+                if (socket.OpenDiscussions != null && socket.OpenDiscussions.Count > 0)
+                {
+                    await discussionCache.UnsubscribeFromMany(socket, socket.OpenDiscussions);
+                }
                 await base.OnDisconnected(socket);
             }
             catch (WebSocketException)
@@ -42,7 +59,7 @@ namespace Connor.Messaging.Bases
             }
         }
 
-        public abstract IRequestHandler<T, R, C> GetRequestHandler(R requestType, IServiceProvider serviceProvider);
+        public abstract IRequestHandler<T, R, C, U> GetRequestHandler(R requestType, IServiceProvider serviceProvider);
         public abstract bool IsPublicRequest(R requestType);
         public abstract bool IsHeartBeat(R requestType);
 
@@ -109,6 +126,7 @@ namespace Connor.Messaging.Bases
 
         public override async Task ReceiveBinaryAsync(T socket, WebSocketReceiveResult result, byte[] buffer)
         {
+            // Future TODO
             return;
         }
     }

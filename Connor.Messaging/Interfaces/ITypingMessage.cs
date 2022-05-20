@@ -1,8 +1,8 @@
 ﻿namespace Connor.Messaging.Interfaces
 {
-    public interface ILoadMessage : IHasSourceUser
+    public interface ITypingMessage : IHasSourceUser
     {
         long DiscussionId { get; set; }
-        int Skip { get; set; }
+        bool Typing { get; set; }
     }
 }
